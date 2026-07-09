@@ -23,7 +23,7 @@ body {
 }
 
 .reveal-viewport {
-  background: #10151f;
+  background: #000;
 }
 
 .reveal .slides {
@@ -105,58 +105,43 @@ body {
   object-position: center;
 }
 
-.collage-slide {
-  display: grid !important;
-  place-items: center;
-  align-content: center;
-  gap: 0.75rem;
-  overflow: hidden;
-  background: #000;
-  color: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  text-align: center !important;
-}
-
-.collage-board {
-  position: relative;
-  width: min(90vw, 62rem);
-  height: min(74vh, 42rem);
-}
-
-.collage-slide p {
-  margin: 0;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-style: italic;
-}
-
-.photo-card {
+.birthday-photo {
   position: absolute;
+  z-index: 1;
   left: var(--left);
   top: var(--top);
   width: var(--width);
   margin: 0;
-  padding: 0.35rem 0.35rem 1.1rem;
+  padding: 0.35rem 0.35rem 0.65rem;
   background: #fffdf9;
   box-shadow: 0 0.65rem 1.25rem rgb(52 41 33 / 25%);
   transform: rotate(var(--rotation));
 }
 
-.photo-card img {
+.birthday-photo img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
-.photo-card--one { --left: 4%; --top: 9%; --width: 28%; --rotation: -7deg; }
-.photo-card--two { --left: 67%; --top: 8%; --width: 28%; --rotation: 6deg; }
-.photo-card--three { --left: 37%; --top: 1%; --width: 25%; --rotation: 2deg; }
-.photo-card--three img { aspect-ratio: 3 / 4; }
-.photo-card--four { --left: 16%; --top: 41%; --width: 27%; --rotation: 5deg; }
-.photo-card--five { --left: 55%; --top: 42%; --width: 29%; --rotation: -5deg; }
-.photo-card--six { --left: 1%; --top: 69%; --width: 27%; --rotation: 4deg; }
-.photo-card--seven { --left: 35%; --top: 70%; --width: 27%; --rotation: -3deg; }
-.photo-card--eight { --left: 70%; --top: 67%; --width: 25%; --rotation: 7deg; }
+.birthday-photo figcaption {
+  padding-top: 0.25rem;
+  color: #272422;
+  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: clamp(0.65rem, 1.3vw, 1rem);
+  line-height: 1.2;
+}
+
+.birthday-photo--one { --left: 4%; --top: 5%; --width: 24%; --rotation: -7deg; }
+.birthday-photo--two { --left: 39%; --top: 2%; --width: 22%; --rotation: 2deg; }
+.birthday-photo--three { --left: 73%; --top: 7%; --width: 23%; --rotation: 6deg; }
+.birthday-photo--three img { aspect-ratio: 3 / 4; }
+.birthday-photo--four { --left: 4%; --top: 25%; --width: 22%; --rotation: 5deg; }
+.birthday-photo--five { --left: 74%; --top: 25%; --width: 22%; --rotation: -5deg; }
+.birthday-photo--six { --left: 4%; --top: 66%; --width: 22%; --rotation: 4deg; }
+.birthday-photo--seven { --left: 39%; --top: 71%; --width: 22%; --rotation: -3deg; }
+.birthday-photo--eight { --left: 74%; --top: 65%; --width: 22%; --rotation: 7deg; }
 
 .birthday-slide {
   display: grid !important;
@@ -177,10 +162,10 @@ body {
   pointer-events: none;
 }
 
-.birthday-slide > div {
+.birthday-message {
   position: relative;
-  z-index: 1;
-  max-width: min(42rem, 85vw);
+  z-index: 2;
+  max-width: min(42rem, 86vw);
 }
 
 .birthday-slide h1,
@@ -205,11 +190,13 @@ body {
     transform: translateX(-50%);
   }
 
-  .collage-board {
-    height: min(70vh, 38rem);
-  }
-
-  .photo-card--six { --top: 56%; }
-  .photo-card--seven { --top: 58%; }
-  .photo-card--eight { --top: 55%; }
+  .birthday-message { max-width: min(42rem, 52vw); }
+  .birthday-photo--one { --left: 5%; --top: 8%; --width: 17%; }
+  .birthday-photo--two { --left: 42%; --top: 3%; --width: 15%; }
+  .birthday-photo--three { --left: 78%; --top: 10%; --width: 16%; }
+  .birthday-photo--four { --left: 4%; --top: 40%; --width: 17%; }
+  .birthday-photo--five { --left: 79%; --top: 42%; --width: 17%; }
+  .birthday-photo--six { --left: 20%; --top: 75%; --width: 17%; }
+  .birthday-photo--seven { --left: 43%; --top: 72%; --width: 16%; }
+  .birthday-photo--eight { --left: 65%; --top: 76%; --width: 17%; }
 }
