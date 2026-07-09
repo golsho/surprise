@@ -11,16 +11,21 @@ const celebrate = canvas && confetti.create(canvas, {
 });
 let celebrationTimer;
 
+function followUpBurst(delay = 700) {
+  celebrationTimer = setTimeout(() => {
+    celebrate({ particleCount: 45, angle: 60, spread: 55, origin: { x: 0, y: 0.85 } });
+    celebrate({ particleCount: 45, angle: 120, spread: 55, origin: { x: 1, y: 0.85 } });
+    if (delay < 2700) followUpBurst(delay + 500);
+  }, delay);
+}
+
 function celebrateBirthday() {
   if (!celebrate) return;
 
-  clearInterval(celebrationTimer);
+  clearTimeout(celebrationTimer);
   celebrate({ particleCount: 300, spread: 120, startVelocity: 60, origin: { x: 0.15, y: 0.85 } });
   celebrate({ particleCount: 300, spread: 120, startVelocity: 60, origin: { x: 0.85, y: 0.85 } });
-  celebrationTimer = setInterval(() => {
-    celebrate({ particleCount: 45, angle: 60, spread: 55, origin: { x: 0, y: 0.85 } });
-    celebrate({ particleCount: 45, angle: 120, spread: 55, origin: { x: 1, y: 0.85 } });
-  }, 800);
+  followUpBurst();
 }
 
 Reveal.initialize({
@@ -40,5 +45,5 @@ Reveal.on("slidetransitionend", ({ currentSlide }) => {
 });
 
 Reveal.on("slidechanged", ({ currentSlide }) => {
-  if (!currentSlide.classList.contains("birthday-slide")) clearInterval(celebrationTimer);
+  if (!currentSlide.classList.contains("birthday-slide")) clearTimeout(celebrationTimer);
 });
